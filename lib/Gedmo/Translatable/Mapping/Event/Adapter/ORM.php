@@ -108,14 +108,16 @@ final class ORM extends BaseAdapterORM implements TranslatableAdapter
     {
         $em = $this->getObjectManager();
         $meta = $em->getClassMetadata($className);
-        $type = Type::getType($meta->getTypeOfField('foreignKey'));
+        $types = PersisterHelper::getTypeOfField('foreignKey', $meta, $em);
+        $columnType = (count($types) ? $types[0] : $meta->getTypeOfField('foreignKey'));
+        $type = Type::getType($columnType);
         switch ($type->getName()) {
-        case Type::BIGINT:
-        case Type::INTEGER:
-        case Type::SMALLINT:
-            return intval($key);
-        default:
-            return (string)$key;
+            case Type::BIGINT:
+            case Type::INTEGER:
+            case Type::SMALLINT:
+                return intval($key);
+            default:
+                return (string)$key;
         }
     }
 
