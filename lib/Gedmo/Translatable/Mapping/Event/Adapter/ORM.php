@@ -5,6 +5,7 @@ namespace Gedmo\Translatable\Mapping\Event\Adapter;
 use Doctrine\Common\Proxy\Proxy;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Doctrine\ORM\Utility\PersisterHelper;
 use Gedmo\Mapping\Event\Adapter\ORM as BaseAdapterORM;
 use Gedmo\Translatable\Mapping\Event\TranslatableAdapter;
 use Gedmo\Tool\Wrapper\AbstractWrapper;
